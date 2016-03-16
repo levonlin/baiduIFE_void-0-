@@ -9,18 +9,13 @@
 		margin: 0;
 		padding: 0;
 	}
-	.clearfix:after {
-		clear: both;
-		content: '';
-		display: block;
-		visibility: hidden;
-		line-height: 0;
-		height: 0;
-	}
 	body {
 		padding: 20px;
 	}
 	#container {
+		display: flex;
+		/* 防止所有项目自动占满容器高度 */
+		align-items: flex-start;
 		min-width: 590px;
 		padding: 20px;
 		border: solid 1px #999;
@@ -32,15 +27,14 @@
 		background-color: #fff;
 	}
 	#left {
-		float: left;
 		width: 158px;
 	}
 	#right {
-		float: right;
 		width: 78px;
 	}
 	#mid {
-		margin: 0 140px 0 220px;
+		flex: 1;
+		margin: 0 20px;
 	}
 	.logo {
 		width: 78px;
@@ -64,21 +58,21 @@
 	}
 </style>
 <body>
-	<div id="container" class="clearfix">
+	<div id="container">
 		<div id="left" class="sub-container">
 			<div class="logo" style="background-image: url();"></div>
 			<p id="team_name">void(0)</p>
+		</div>
+		<div id="mid" class="sub-container">
+			<h2>团队介绍</h2><br>
+			<p>这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			</p>
 		</div>
 		<div id="right" class="sub-container">
 			<div class="logo" style="background-image: url();"></div>
 			<div class="logo" style="background-image: url();"></div>
 			<div class="logo" style="background-image: url();"></div>
 			<div class="logo" style="background-image: url();"></div>
-		</div>
-		<div id="mid" class="sub-container">
-			<h2>团队介绍</h2><br>
-			<p>这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。这是一段团队介绍。<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			</p>
 		</div>
 	</div>
 </body>
