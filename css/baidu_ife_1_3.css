@@ -1,0 +1,32 @@
+/*暂时支持IE8+、Firefox、chrome等*/
+/*reset*/
+*{margin: 0;padding: 0;box-sizing: border-box;}
+
+/*定义通用样式*/
+div.container>div{padding: 20px;border: 1px solid #999;}
+body{padding: 20px;}
+
+/*定义最外围容器的样式*/
+div.container{min-height: 460px;position:relative;background-color: #eee;padding: 20px 160px 20px 240px;border: 1px solid #999;}
+
+/*定义左边容器的样式*/
+div.left{position: absolute;top: 20px;left: 20px;width: 200px;}
+
+/*清除teamlogo浮动的影响，恢复左边容器的高度*/
+div.left:after{content: "";display: block;height: 0;overflow: hidden;visibility: hidden;clear: both;}
+
+/*定义teamlogo的样式*/
+div.teamlogo{width: 80px;height: 80px;float: left;border: 1px solid #999;}
+
+/*定义团队名称所在p元素的样式，并使内部文字相对左边容器垂直居中*/
+div.left p{position: absolute;top: 50%;right: 20px;margin-top: -13px;font-size: 20px;}
+
+/*定义右边容器的样式*/
+div.right{position: absolute;top: 20px;right: 20px;width: 120px;}
+
+/*定义右边容器内部teammate的样式*/
+div.teammate{width: 80px;height: 80px;border: 1px solid #999;margin-top: 20px;}
+div.teammate1{margin-top: 0;}
+
+/*定义中间容器的样式*/
+div.body{height: 500px;position: relative;}

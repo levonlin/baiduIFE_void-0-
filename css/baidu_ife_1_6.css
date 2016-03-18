@@ -1,0 +1,56 @@
+/*reset*/
+body,p,h1,h2,span,ul{margin: 0;padding: 0;}
+*{box-sizing: border-box;}
+h3{line-height: 1;text-decoration: underline;font-family: "微软雅黑";}
+/*定义整个容器的样式*/
+div.container{width: 980px;height: 1386px;padding: 0 44px;margin: 0 auto;}
+div.container>div{margin-bottom: 35px;}
+/*定义主容器头部的样式*/
+div.header{position: relative;width: 892px;height: 61px;border-bottom: 2px solid #818F94;line-height: 0;}
+div.header span{position: absolute;bottom: 0;}
+div.header_url{display: inline-block;width: 110px;height: 61px;background-color: #DB3E75;font-size: 12px;font-family: "黑体";color: #fff;line-height: 1.5;}
+span.header_date{font-size: 12px;font-family: "黑体";color: #d45d5c;line-height: 1.5;right: 0;}
+/*定义主容器中主体上半部分内容的样式，上半部分包括左右两部分内容*/
+div.body_top:after{content: "";height: 0;display: block;overflow: hidden;visibility: hidden;clear: both;}
+div.body_top_left{float: left;}
+div.body_top_left_img{width: 641px;height: 301px;margin-bottom: 35px;}
+div.body_parts div{padding-right: 20px;font-size: 12px;color: #767777;font-family: "宋体";line-height: 16px;}
+div.body_parts_left{width: 255px;height: 200px;float: left;}
+div.body_parts_left h3{color: #418c59;}
+div.body_parts_middle{width: 235px;height: 200px;float: left;}
+div.body_parts_middle h3{color: #d2994f;}
+div.body_parts_right{width: 151px;height: 200px;float: left;}
+div.body_parts_right h3{color: #cc7680;}
+div.body_parts_right p{line-height: 20px;}
+div.body_top_right{width: 203px;height: 301px;float: right;border-top: 2px solid #CA69B8;line-height: 1;}
+/*定义主容器中主体下半部分内容的样式，下半部分也包括左右两部分内容*/
+div.body_bottom:after{content: "";height: 0;display: block;overflow: hidden;visibility: hidden;clear: both;}
+div.body_bottom_left{width: 406px;height: 606px;line-height: 16px;font-size: 12px;color: #767777;font-family: '宋体';float: left;}
+div.body_bottom_left h1{color: #11456b;font-family: '黑体';font-weight: bold;font-size: 42px;line-height: 1;}
+div.body_bottom_left h1 span{font-size: 72px;color: #f5e327;font-family: '黑体';font-weight: bold;}
+div.body_bottom_left h2{color: #11456b;font-family: '黑体';font-size: 33px;line-height: 1.5;}
+div.body_bottom_left_content{padding-top: 20px;padding-left: 7px;border-top: 2px solid #11456b;}
+div.body_bottom_left_content p span{font-size: 70px;color: #f5e327;font-family: '微软雅黑';float: left;padding-right: 2px;line-height: 1.1;}
+div.body_bottom_left img{margin: 20px 5px 12px 15px;float: right;}
+/*定义主容器中主体右下角背景颜色为灰色部分的样式*/
+div.body_bottom_right{width: 458px;height: 611px;float: right;}
+div.body_bottom_right_content{position: relative;width: 100%;height: 318px;margin-top: 18px;background-color: #EEEED6;padding-top: 30px;}
+div.body_bottom_right_content ul{margin-left: 20px;}
+div.body_bottom_right_content ul li{color: #5a5b5b;font-family: "宋体";line-height: 20px;margin-bottom: 20px;list-style: none;}
+div.body_bottom_right_content ul li i{display: inline-block;width: 24px;height: 18px;background: url(../image/task_1_6_4.gif);}
+div.body_bottom_right_content ul li span{font-size: 12px;text-align: right;}
+/*body_bottom_right_wrapper容器包含背景颜色为红色的部分和含有大双引号的部分*/
+div.body_bottom_right_wrapper{position: absolute;bottom: 0;height: 160px;padding-right: 20px;}
+/*定义主容器中主体右下角背景颜色为红色部分的样式*/
+div.body_bottom_right_red_area{width: 260px;height: 160px;background-color: #D55D5C;float: left;padding: 37px 10px;color: #fff;}
+div.body_bottom_right_red_area span{font-size: 110px;font-family: '微软雅黑';float: left;margin-top: -32px;}
+div.body_br_red_area_content{border-left: 2px solid #fff;width: 170px;height: 86px;float: left;font-family: "黑体";margin-left: 5px;padding-left: 5px;padding-top: 5px;}
+/*定义包含大双引号的那一部分的样式*/
+div.body_br_red_area_rdiv{position: relative;width: 163px;height: 160px;float: left;margin-left: 15px;padding: 10px 0;font-family: "黑体";}
+div.body_br_red_area_rdiv p{font-size: 14px;line-height: 16px;color: #5a5b5b;text-indent: 42px;}
+div.body_br_red_area_rdiv span{width: 33px;height: 27px;display: inline-block;}
+div.body_br_red_area_rdiv span.left_quote{position: absolute;left: 0;top: 0;background: url(../image/task_1_6_5.gif);}
+div.body_br_red_area_rdiv span.right_quote{position: absolute;bottom: 60px;right: 0;background: url(../image/task_1_6_6.gif);}
+/*定义页脚的样式*/
+div.footer{position: relative;width: 892px;height: 30px;border-top: 1px solid #938e8c;}
+div.footer span{color: #d45d5c;font-size: 12px;font-family: "黑体";position: absolute;top: 0;right: 0;}
