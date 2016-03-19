@@ -14,7 +14,10 @@ span.header_date{font-size: 12px;font-family: "黑体";color: #d45d5c;line-heigh
 /*定义主容器中主体上半部分内容的样式，上半部分包括左右两部分内容*/
 div.body_top:after{content: "";height: 0;display: block;overflow: hidden;visibility: hidden;clear: both;}
 div.body_top_left{float: left;}
-div.body_top_left_img{width: 641px;height: 301px;margin-bottom: 35px;}
+div.body_top_left_img{position: relative;width: 641px;height: 301px;margin-bottom: 35px;}
+div.body_top_left_img div{position: absolute;top: 0;width: 191px;height: 301px;}
+div.green_cover{background-color: rgba(151,185,154,.5);left: 0;}
+div.pink_cover{background-color: rgba(226,182,181,.5);right: 0;}
 div.body_parts div{padding-right: 20px;font-size: 12px;color: #767777;font-family: "宋体";line-height: 16px;}
 div.body_parts_left{width: 255px;height: 200px;float: left;}
 div.body_parts_left h3{color: #418c59;}
@@ -35,6 +38,9 @@ div.body_bottom_left_content p span{font-size: 70px;color: #f5e327;font-family: 
 div.body_bottom_left img{margin: 20px 5px 12px 15px;float: right;}
 /*定义主容器中主体右下角背景颜色为灰色部分的样式*/
 div.body_bottom_right{width: 458px;height: 611px;float: right;}
+div.body_bottom_right_img{position: relative;}
+div.gray_cover{position: absolute;bottom: 0;width: 458px;height: 60px;background-color: rgba(104,99,100,.8);padding: 8px 38px;}
+div.gray_cover p{border-left: 3px solid #72B16A;height: 44px;font-family: "微软雅黑";font-size: 12px;color: #72B16A;padding: 2.5px 15px;}
 div.body_bottom_right_content{position: relative;width: 100%;height: 318px;margin-top: 18px;background-color: #EEEED6;padding-top: 30px;}
 div.body_bottom_right_content ul{margin-left: 20px;}
 div.body_bottom_right_content ul li{color: #5a5b5b;font-family: "宋体";line-height: 20px;margin-bottom: 20px;list-style: none;}
