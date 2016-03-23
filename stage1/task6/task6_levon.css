@@ -63,7 +63,7 @@
     
     #img-top-left {
         height: 301px;
-        background-image: url(img/img1.jpg);
+        background-image: url(img_levon/img1.jpg);
     }
     
     .mask {
@@ -246,7 +246,7 @@
         position: relative;
         width: 458px;
         height: 257px;
-        background-image: url(img/img2.jpg);
+        background-image: url(img_levon/img2.jpg);
     }
 
     #img-bottom-right .mask-bottom {
@@ -286,7 +286,7 @@
 
     #article-bottom-right ul  {
         padding: 20px 0 0 50px;
-        list-style-image: url(img/img4.gif);
+        list-style-image: url(img_levon/img4.gif);
     }
 
     #article-bottom-right ul li {
