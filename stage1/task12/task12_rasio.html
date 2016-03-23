@@ -3,50 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>task12_学习CSS3的新特性</title>
-	<style type="text/css">
-		#container {
-			text-align: center;
-			font: 12px 'Microsoft YaHei', sans-serif, \5FAE\8F6F\96C5\9ED1;
-		}
-
-		table {
-			margin: 0 auto;
-			border-spacing: 1px;
-		}
-		table th {
-			background-color: #000;
-			color: #fff;
-			font-weight: normal;
-		}
-
-		table tr:nth-child(odd) {
-			background-color: #ccc;
-		}
-
-		table tr:nth-child(-n + 4) {
-			color: #f00;
-		}
-
-		input {
-			margin: 50px 0;
-			width: 100px;
-		}
-
-		input:focus {
-			width: 200px;
-			transition: width 0.5s;
-		}
-
-		#banner {
-			margin: 0 auto;
-			width: 300px;
-			height: 100px;
-		}
-
-		#banner ul {
-			list-style: none;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="task12_radio.css">
 </head>
 <body>
 	<div id="container">
@@ -109,15 +66,18 @@
 		</table>
 		<input type="text">
 		<div id="banner">
-			<div id="slide">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-			<ul>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
+			<input type="radio" name="slide" id="radio1">
+			<input type="radio" name="slide" id="radio2">
+			<input type="radio" name="slide" id="radio3">
+			<ul id="slider" class="slider clearfix">
+				<li style="background-color: #33f;"></li>
+				<li style="background-color: #3f3;"></li>
+				<li style="background-color: #f33;"></li>
+			</ul>
+			<ul class="controller clearfix">
+				<li><label for="radio1">1</label></li>
+				<li><label for="radio2">2</label></li>
+				<li><label for="radio3">3</label></li>
 			</ul>
 		</div>
 	</div>
