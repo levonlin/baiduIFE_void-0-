@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>task12_学习CSS3的新特性</title>
-	<link rel="stylesheet" type="text/css" href="task12_radio.css">
+	<link rel="stylesheet" type="text/css" href="task12_target.css">
 </head>
 <body>
 	<div id="container">
@@ -66,18 +66,15 @@
 		</table>
 		<input type="text">
 		<div id="banner">
-			<input type="radio" name="slide" id="radio1">
-			<input type="radio" name="slide" id="radio2">
-			<input type="radio" name="slide" id="radio3">
-			<ul class="slider clearfix">
-				<li style="background-color: #33f;"></li>
-				<li style="background-color: #3f3;"></li>
-				<li style="background-color: #f33;"></li>
+			<ul class="slider">
+				<li style="background-color: #33f;" id="block1">左右</li>
+				<li style="background-color: #3f3;" id="block2">左右</li>
+				<li style="background-color: #f33;" id="block3">左右</li>
 			</ul>
 			<ul class="controller clearfix">
-				<li><label for="radio1">1</label></li>
-				<li><label for="radio2">2</label></li>
-				<li><label for="radio3">3</label></li>
+				<li><a href="#block1">1</a></li>
+				<li><a href="#block2">2</a></li>
+				<li><a href="#block3">3</a></li>
 			</ul>
 		</div>
 	</div>
