@@ -6,7 +6,12 @@
 ##任务完成情况
 * stage1
     - [task1](http://levonlin.github.io/ife_void0/stage1/task1)
-    - [task3-浮动](http://levonlin.github.io/ife_void0/stage1/task3/task3_float.html/)
-    - [task3-flex](http://levonlin.github.io/ife_void0/stage1/task3/task3_flex.html/)
-    - [task3-圣杯](http://levonlin.github.io/ife_void0/stage1/task3/task3_ HolyGrail.html/)
-    - [task3-双飞翼](http://levonlin.github.io/ife_void0/stage1/task3/task3_doublefly.html/)
+    - [task3-浮动](http://levonlin.github.io/ife_void0/stage1/task3/task3_float.html)
+    - [task3-flex](http://levonlin.github.io/ife_void0/stage1/task3/task3_flex.html)
+    - [task3-圣杯](http://levonlin.github.io/ife_void0/stage1/task3/task3_HolyGrail.html)
+    - [task3-双飞翼](http://levonlin.github.io/ife_void0/stage1/task3/task3_doublefly.html)
+    - [task4-浮动](http://levonlin.github.io/ife_void0/stage1/task4/task4_float.html)
+    - [task4-绝对定位](http://levonlin.github.io/ife_void0/stage1/task4/task4_absolute.html)
+    - [task4-flex](http://levonlin.github.io/ife_void0/stage1/task4/task4_flex.html)
+    - [task4-table](http://levonlin.github.io/ife_void0/stage1/task4/task4_table.html)
+    - [task4-利用按钮元素](http://levonlin.github.io/ife_void0/stage1/task4/task4_button.html)
