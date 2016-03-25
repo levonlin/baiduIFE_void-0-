@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 21</title>
+	<style type="text/css">
+		body{margin: 0;padding: 0;}
+		div.inputDiv{padding: 10px;}
+		div.queue{vertical-align: bottom;}
+		div.queue>p{min-width: 40px;min-height: 20px;max-width: 200px;background-color: #E54F47;display: inline-block;margin: 10px;color: #fff;font-family: "黑体";font-size: 18px;text-align: center;padding: 5px;cursor: pointer;}
+		div button{margin-left: 20px;}
+	</style>
+</head>
+<body>
+	<div class="inputDiv">
+		请输入内容：<input type="text" id="tagInput">
+		<button id="insertTag">插入Tag</button>
+	</div>
+	<div class="queue" id="tagQueue"></div>
+	<div class="inputDiv">
+		请输入兴趣爱好：<textarea cols="25" rows="5" id="hobbyInput"></textarea>
+		<button id="insertHobby">插入</button>
+	</div>
+	<div class="queue" id="hobbyQueue"></div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>

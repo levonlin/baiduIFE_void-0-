@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <script src="task.js"></script>
+    <style type="text/css">
+    *{box-sizing: border-box;}
+    p,span{margin: 0;padding: 0;}
+    div.aqi-chart-container{margin: 0 auto;width: 550px;height: 630px;font-size: 14px;font-family: "黑体";color: #BFBFBF;border: 2px solid #BFBFBF;border-radius: 10px;}
+    div.aqi-chart-container p{height: 50px;font-size: 16px;color: #000;text-align: center;background-color: #EEE;border-bottom: 2px solid #BFBFBF;padding-top: 15px;}
+    div.aqi-chart-container>div{position: relative;height: 540px;padding: 40px 30px 0 40px;}
+    div.aqi-y-axis{position: absolute;width: 10px;height: 500px;}
+    div.aqi-y-axis>div{position: relative;width: 10px;height: 100px;border-top: 1px solid #BFBFBF;border-left: 1px solid #BFBFBF;}
+    div.aqi-y-axis>div span{position: absolute;left: -30px;top: -10px;}
+    div.aqi-y-axis span{position: absolute;left: -15px;bottom: -10px;}
+    div.aqi-time-axis{position: absolute;bottom: 0;left: 40px;width: 485px;height: 10px;}
+    div.aqi-time-axis>div{position: relative;height: 10px;border-bottom: 1px solid #BFBFBF;border-right: 1px solid #BFBFBF;float: left;}
+    div.aqi-time-axis>div.aqi-time-jan{width: 175px;}
+    div.aqi-time-axis>div.aqi-time-febr{width: 145px;}
+    div.aqi-time-axis>div.aqi-time-mar{width: 165px;}
+    div.aqi-time-axis>div span{position: absolute;bottom: -20px;}
+    div.aqi-time-axis>div.aqi-time-jan span{left: 80px;}
+    div.aqi-time-axis>div.aqi-time-febr span{left: 50px;}
+    div.aqi-time-axis>div.aqi-time-mar span{left: 70px;}
+    div.aqi-chart-wrap{height: 500px;line-height: 0;}
+    div.aqi-chart-wrap div{display: inline-block;cursor: pointer;}
+    div.aqi-chart-wrap div.placeholder{width: 20px;height: 500px;}
+    </style>
+  </head>
+<body>
+  <fieldset id="form-gra-time">
+    <legend>请选择日期粒度：</legend>
+    <label>日<input name="gra-time" value="day" type="radio"></label>
+    <label>周<input name="gra-time" value="week" type="radio"></label>
+    <label>月<input name="gra-time" value="month" type="radio"></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>请选择查看的城市：</legend>
+    <select id="city-select">
+      <option value="-1" selected="selected">请选择</option>
+    </select>
+  </fieldset>
+  
+  <div class="aqi-chart-container">
+    <p class="aqi-chart-title"><span></span>在第一季度中的空气质量指数分布情况</p>
+    <div>
+      <div class="aqi-y-axis">
+        <div class="aqi-y-scale"><span>500</span></div>
+        <div class="aqi-y-scale"><span>400</span></div>
+        <div class="aqi-y-scale"><span>300</span></div>
+        <div class="aqi-y-scale"><span>200</span></div>
+        <div class="aqi-y-scale"><span>100</span></div>
+        <span>0</span>
+      </div>
+      <div class="aqi-chart-wrap" id="aqi-chart-wrap">
+      </div>
+      <div class="aqi-time-axis">
+        <div class="aqi-time-jan"><span>1月份</span></div>
+        <div class="aqi-time-febr"><span>2月份</span></div>
+        <div class="aqi-time-mar"><span>3月份</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
