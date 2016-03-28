@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 28</title>
+	<style type="text/css">
+		*{box-sizing: border-box;}
+		p{margin: 0;padding: 0;}
+		body{font-family: "黑体";margin: 0;padding: 0;}
+		body:after{content: "";height: 0;display: block;overflow: hidden;visibility: hidden;clear: both;}
+		div.space{position: relative;width: 800px;height: 750px;background-color: #000;float: left;}
+		div.orbit{position: absolute;top: 50%;left: 50%;border: 1px solid #fff;}
+		div.orbit0{width: 380px;height: 380px;border-radius: 190px;margin-left: -190px;margin-top: -190px;}
+		div.orbit1{width: 480px;height: 480px;border-radius: 240px;margin-left: -240px;margin-top: -240px;}
+		div.orbit2{width: 580px;height: 580px;border-radius: 290px;margin-left: -290px;margin-top: -290px;}
+		div.orbit3{width: 680px;height: 680px;border-radius: 340px;margin-left: -340px;margin-top: -340px;}
+		div.planet{position: absolute;top: 50%;margin-top: -150px;left: 50%;margin-left: -150px;width: 300px;height: 300px;background-color: blue;border-radius: 150px;}
+		div.spaceship{position: absolute;top: 50%;margin-top: -50px;width: 40px;height: 100px;border-radius: 20px;background-color: #999;padding-top: 20px;/* -webkit-animation: circle 20s infinite linear;-o-animation: circle 20s infinite linear;animation: circle 20s infinite linear; */}
+		div#ship0{left: 190px;transform-origin: 525% center;}
+		div#ship1{left: 140px;transform-origin: 650% center;}
+		div#ship2{left: 90px;transform-origin: 775% center;}
+		div#ship3{left: 40px;transform-origin: 900% center;}
+
+		div.spaceship p{color: #000;font-size: 12px;text-align: center;}
+
+		div.user{width: 510px;float: left;margin: 10px 0 0 15px;border: 1px solid #333;}
+		div.options{font-size: 14px;padding: 10px;}
+		div.options label{cursor: pointer;}
+		div.controller{padding: 10px;border-top: 1px solid #333;}
+		div.state{height: 200px;}
+		div.state p{height: 50px;border-top: 1px solid #333;padding: 10px;font-size: 14px;}
+		div.state p button{margin-right: 10px;}
+		div.console{height: 300px;overflow: auto;border-top: 1px solid #333;background-color: #000;}
+		div.console p{font-size: 14px;color: #fff;}
+
+		div.movable{position: absolute;width: 500px;height: 250px;background-color: #fff;}
+		div.movable p{cursor: move;text-align: center;height: 40px;background-color: #333;color: #fff;font-size: 20px;padding-top: 10px;}
+		div.movable>div{padding: 20px 50px;}
+		div.movable>div table{width: 400px;}
+		div.movable>div table thead th{background-color: #ccc;height: 30px;}
+		div.movable>div table tr td{background-color: #ddd;height: 30px;text-align: center;}
+	</style>
+</head>
+<body>
+	<div class="space" id="space">
+		<div class="orbit orbit0"></div>
+		<div class="orbit orbit1"></div>
+		<div class="orbit orbit2"></div>
+		<div class="orbit orbit3"></div>
+		<div class="planet"></div>
+		<!-- <div class="spaceship"></div> -->
+	</div>
+	<div class="user">
+		<div class="options">
+			<div id="power">
+				动力系统选择：&nbsp;<label for="lowSpeed">
+					<input type="radio" name="power" checked="checked" id="lowSpeed" value="lowSpeed">前进号（速率30px/s，能耗5%/s）
+				</label><br>
+				<label for="middleSpeed">
+					<input type="radio" name="power" id="middleSpeed" value="middleSpeed">奔腾号（速率50px/s，能耗7%/s）
+				</label>&nbsp;
+				<label for="highSpeed">
+					<input type="radio" name="power" id="highSpeed" value="highSpeed">超越号（速率80px/s，能耗9%/s）
+				</label>
+			</div>
+			<div id="energy">
+				能源系统选择：&nbsp;<label for="slowSupply">
+					<input type="radio" name="energy" checked="checked" id="slowSupply" value="slowSupply">劲量型（补充能源速度2%/s）
+				</label><br>
+				<label for="middleSupply">
+					<input type="radio" name="energy" id="middleSupply" value="middleSupply">光能型（补充能源速度3%/s）
+				</label>&nbsp;
+				<label for="fastSupply">
+					<input type="radio" name="energy" id="fastSupply" value="fastSupply">永久型（补充能源速度4%/s）
+				</label>
+			</div>
+			<button id="create">创建新飞船</button>
+		</div>
+		<div class="controller">
+			<button class="launch" id="launch">新的飞船起飞</button>
+		</div>
+		<div class="state" id="state"></div>
+		<div class="console" id="console"></div>
+	</div>
+	<div class="movable" id="movablePanel">
+		<p class="title" id="title">飞船运行状况实时监测图</p>
+		<div>
+			<table id="watchTable">
+				<thead>
+					<th>飞船</th>
+					<th>动力系统</th>
+					<th>能源系统</th>
+					<th>当前飞行状态</th>
+					<th>剩余能耗</th>
+				</thead>
+				<tr id="ship0Line">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr id="ship1Line">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr id="ship2Line">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr id="ship3Line">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 26</title>
+	<style type="text/css">
+		*{box-sizing: border-box;}
+		p{margin: 0;padding: 0;}
+		div.space{position: relative;width: 800px;height: 750px;background-color: #000;float: left;}
+		div.orbit{position: absolute;top: 50%;left: 50%;border: 1px solid #fff;}
+		div.orbit0{width: 380px;height: 380px;border-radius: 190px;margin-left: -190px;margin-top: -190px;}
+		div.orbit1{width: 480px;height: 480px;border-radius: 240px;margin-left: -240px;margin-top: -240px;}
+		div.orbit2{width: 580px;height: 580px;border-radius: 290px;margin-left: -290px;margin-top: -290px;}
+		div.orbit3{width: 680px;height: 680px;border-radius: 340px;margin-left: -340px;margin-top: -340px;}
+		div.planet{position: absolute;top: 50%;margin-top: -150px;left: 50%;margin-left: -150px;width: 300px;height: 300px;background-color: blue;border-radius: 150px;}
+		div.spaceship{position: absolute;top: 50%;margin-top: -50px;width: 40px;height: 100px;border-radius: 20px;background-color: #999;padding-top: 20px;/* -webkit-animation: circle 20s infinite linear;-o-animation: circle 20s infinite linear;animation: circle 20s infinite linear; */}
+		div#ship0{left: 190px;transform-origin: 525% center;}
+		div#ship1{left: 140px;transform-origin: 650% center;}
+		div#ship2{left: 90px;transform-origin: 775% center;}
+		div#ship3{left: 40px;transform-origin: 900% center;}
+
+		div.spaceship p{color: #000;font-size: 12px;font-family: "黑体";text-align: center;}
+
+		div.user{width: 510px;float: left;margin: 50px 0 0 15px;border: 1px solid #333;}
+		div.controller{padding: 10px;}
+		div.state{height: 200px;}
+		div.state p{height: 50px;border-top: 1px solid #333;padding: 10px;font-size: 14px;}
+		div.state p button{margin-right: 10px;}
+		div.console{height: 300px;overflow: auto;border-top: 1px solid #333;background-color: #000;}
+		div.console p{font-size: 14px;font-family: "黑体";color: #fff;}
+	</style>
+</head>
+<body>
+	<div class="space" id="space">
+		<div class="orbit orbit0"></div>
+		<div class="orbit orbit1"></div>
+		<div class="orbit orbit2"></div>
+		<div class="orbit orbit3"></div>
+		<div class="planet"></div>
+		<!-- <div class="spaceship"></div> -->
+	</div>
+	<div class="user">
+		<div class="controller">
+			<button class="launch" id="launch">新的飞船起飞</button>
+		</div>
+		<div class="state" id="state"></div>
+		<div class="console" id="console"></div>
+	</div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>
