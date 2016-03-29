@@ -22,5 +22,8 @@
 * [table](http://levonlin.github.io/ife_void0/stage1/task4/task4_table.html)
 * [利用按钮元素](http://levonlin.github.io/ife_void0/stage1/task4/task4_button.html)
 
+#### task8
+* [demo](http://levonlin.github.io/ife_void0/stage1/task8)
+
 #### task10
 * [demo](http://levonlin.github.io/ife_void0/stage1/task10)
