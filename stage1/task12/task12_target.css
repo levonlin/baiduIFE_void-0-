@@ -1,0 +1,107 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+}
+
+#container {
+    text-align: center;
+    font: 12px 'Microsoft YaHei', sans-serif, \5FAE\8F6F\96C5\9ED1;
+}
+
+table {
+    margin: 0 auto;
+    border-spacing: 1px;
+}
+table th {
+    background-color: #000;
+    color: #fff;
+    font-weight: normal;
+}
+
+table tr:nth-child(odd) {
+    background-color: #ccc;
+}
+
+table tr:nth-child(-n + 4) {
+    color: #f00;
+}
+
+input {
+    margin: 50px 0;
+    width: 100px;
+}
+
+input:focus {
+    width: 200px;
+    transition: width 0.5s;
+}
+
+#banner {
+    position: relative;
+    margin: 0 auto;
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+}
+
+#banner ul.slider {
+	position: relative;
+    list-style: none;
+}
+
+#banner ul.slider li {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+}
+
+/* 为防止一开始加载时堆叠顺序后来居上，强制将第一个元素放到上面 */
+#block1 {
+    z-index: 1;
+}
+
+@keyframes slideleftin {
+    0% {
+    	transform: translateX(200px); 
+    }
+    100% {
+    	transform: translateX(0);
+    }
+}
+
+#banner ul.slider li:target {
+    z-index: 2;
+    /* 加上延时防止动画和锚点定位同时发生导致冲突 */
+	animation: slideleftin 1s 0.05s linear;
+}
+
+#banner ul.controller {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    list-style: none;
+}
+
+#banner ul.controller li {
+    float: left;
+    margin-left: 3px;
+}
+
+#banner ul.controller li a {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    text-decoration: none;
+}
