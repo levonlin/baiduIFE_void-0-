@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input id="text" type="text">
+<button data-action="li">left in</button>
+<button data-action="ri">right in</button>
+<button data-action="lo">left out</button>
+<button data-action="ro">right out</button>
+
+<div>
+  <ul id="deque">
+    <li value="11">11</li>
+  </ul>
+</div>
+<script>
+  String.prototype.isEmpty = function () {
+    return (this.length === 0 || !this.trim());
+  };
+
+  String.prototype.isNumber = function () {
+    return isNaN(+value);
+  };
+
+  function nodeList2Arr(nodeList) {
+    return Array.prototype.slice.call(nodeList);
+  }
+
+
+  var oInput = document.getElementById("text");
+  var buttons = document.getElementsByTagName("button");
+  var dequeNode = document.getElementById("deque");
+
+  var Deque = function (dequeNode) {
+    this.dequeNode = dequeNode;
+  };
+
+  function isEmpty(nodeList) {
+    return nodeList.hasChildNodes();
+  }
+  Deque.prototype.peek = function (type) {
+    if (this.dequeNode.hasChildNodes()) {
+      if (type = 0) {
+        return this.dequeNode.firstElementChild;
+      }
+      if (type = 1) {
+        return this.dequeNode.lastElementChild;
+      }
+    }
+    else {
+      return null;
+    }
+  };
+  //unshift
+  Deque.prototype.li = function (node) {
+    this.dequeNode.insertBefore(node, this.dequeNode.firstChild);
+  };
+  //push
+  Deque.prototype.ri = function (node) {
+    this.dequeNode.appendChild(node);
+  };
+  //shift
+
+  Deque.prototype.lo = function () {
+    var willDelNode = this.peek(0);
+    if (willDelNode == null) {
+      console.log("deque is empty");
+    }
+    else {
+      console.log("left out" + willDelNode.value);
+      this.dequeNode.removeChild(willDelNode);
+    }
+  };
+  //pop
+  Deque.prototype.ro = function () {
+    var willDelNode = this.peek(1);
+    if (willDelNode == null) {
+      console.log("deque is empty");
+    }
+    else {
+      console.log("right out" + willDelNode.value);
+      this.dequeNode.removeChild(willDelNode);
+    }
+  };
+
+  function bindButton() {
+    var buttonsArr = nodeList2Arr(buttons);
+    buttonsArr.map(function (button) {
+      button.onclick = function () {
+        var action = button.dataset.action;
+
+        switch (action) {
+          case 'li':
+          case 'ri':
+            var li = document.createElement('li');
+            var value = oInput.value;
+            if (value.isEmpty()) {
+              console.log("不能为空");
+              return false;
+            }
+            else if (value.isNumber()) {
+              console.log("非法数字");
+              return false;
+            }
+            else {
+              li.value = value;
+              li.innerText = value;
+            }
+            deque[action](li);
+            break;
+          case 'lo':
+          case 'ro':
+            deque[action]();
+            break;
+          default:
+            return false;
+        }
+      }
+    });
+  }
+  var deque = new Deque(dequeNode);
+  bindButton();
+
+</script>
+
+</body>
+</html>
