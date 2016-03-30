@@ -62,24 +62,25 @@ input:focus {
     position: absolute;
     width: 200px;
     height: 100px;
-    left: 200px;
 }
 
+/* 为防止一开始加载时堆叠顺序后来居上，强制将第一个元素放到上面 */
 #block1 {
-	transform: translateX(-200px);
+    z-index: 1;
 }
 
 @keyframes slideleftin {
     0% {
-    	transform: translateX(0); 
+    	transform: translateX(200px); 
     }
     100% {
-    	transform: translateX(-200px);
+    	transform: translateX(0);
     }
 }
 
 #banner ul.slider li:target {
-	transform: translateX(-200px);
+    z-index: 2;
+    /* 加上延时防止动画和锚点定位同时发生导致冲突 */
 	animation: slideleftin 1s 0.05s linear;
 }
 

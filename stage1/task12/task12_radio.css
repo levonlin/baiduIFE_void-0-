@@ -57,26 +57,26 @@ input[name=slide] {
     display: none;
 }
 
-#radio1:checked~ul.slider {
+#radio1:checked~#slider {
     transform: translateX(0);
 }
 
-#radio2:checked~ul.slider {
+#radio2:checked~#slider {
     transform: translateX(-200px);
 }
 
-#radio3:checked~ul.slider {
+#radio3:checked~#slider {
     transform: translateX(-400px);
 }
 
-#banner ul.slider {
+#slider {
     width: 600px;
     height: 100px;
     transition: transform 1s;
     list-style: none;
 }
 
-#banner ul.slider li {
+#slider li {
     float: left;
     width: 200px;
     height: 100px;
