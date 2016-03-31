@@ -1,0 +1,42 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html, body {
+	height: 100%;
+}
+#container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	padding: 20px;
+}
+.item {
+	width: 150px;
+	border: solid 1px #f00;
+}
+#item1 {
+	height: 120px;
+}
+#item2 {
+	height: 100px;
+}
+#item3 {
+	height: 40px;
+}
+#item4 {
+	height: 200px;
+	border: solid 1px #00f;
+}
+@media (max-width: 640px) {
+	#container {
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+	#item4 {
+		order: -1;
+	}
+}

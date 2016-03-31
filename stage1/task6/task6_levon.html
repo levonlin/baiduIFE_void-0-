@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task6_通过HTML及CSS模拟报纸排版</title>
+    <link rel="stylesheet" href="task6_levon.css">
+    <!--[if lt IE 9]>
+    <style type="text/css">
+        .mask {
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+        }
+        .article-column+.article-column p {
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+        }
+    </style>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="header-left"><a href="http://ife.baidu.com">&nbsp;ife.baidu.com</a></div>
+            <span id="header-right">2016.03</span>
+        </div>
+        <div id="content-top" class="clearfix">
+            <div id="content-top-left">
+                <div id="img-top-left">
+                    <div class="mask mask-left"></div>
+                    <div class="mask mask-right"></div>
+                </div>
+                <div id="article-top-left" class="clearfix">
+                    <div class="article-column" id='article-column-left'>
+                        <h2>What</h2>
+                        <p>端前端前端端前端前端前端前端前端前端前 端前端前端前端前端前端前端前端端前端前 端端前端前端前端前端前端前端前端前端前 端前端前端前端前端前端端前端前端端前端 前端前端前端前端前端前端前端前端前端前 端前端前端前端端前端前端端前端前端前端 前端前端前端前端前端前端前端前端前端前 端前端端前端前端前端前端前端前端前端前 端前端端前端前端</p>
+                    </div>
+                    <div class="article-column" id='article-column-mid'>
+                        <h2>When</h2>
+                        <p>端前端前端端前端前端前端前端前端前 端前端前端前端前端前端前端前端前端 端前端前端端前端前端前端前端前端前 端前端前端前端前端前端前端前端前端 端前端前端端前端前端前端前端前端前 端前端前端前端前端前端前端前端前端 端前端前端端前端前端前端前端前端前 端前端前端前端前端前端前端前端前端 端前端前端</p>
+                    </div>
+                    <div class="article-column" id='article-column-right'>
+                        <h2>How</h2>
+                        <p><span class='every-line'>前端前端端前端前端</span>
+                           <span class='every-line'>前端前端前端前端前端前</span>
+                           <span class='every-line'>端前端前端端前</span></p>
+                        <p><span class='every-line'>What-------- <span>40%</span></span> 
+                           <span class='every-line'>What-------- <span>30%</span></span> 
+                           <span class='every-line'>What-------- <span>30%</span></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="content-top-right">
+				<p class="text-top-1">About<br>Technologe</p>
+				<p class="text-top-2">About technologe about technologe about technologe</p>
+                <p class="text-mid">700</p>
+                <p class="text-bottom">3.2<span class="text-bottom-1">css</span><span class="text-bottom-2">cssssccsccscssc</span></p>
+            </div>
+        </div>
+        <div id="content-bottom">
+        	<div id="content-bottom-left">
+        		<h1><span>THE</span> TECHNOLOGE OF FRONT<br></h1>
+        		<h2>前端技术领域</h2>
+        		<p><span>前</span>端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端<img src="img_levon/img3.jpg" alt="img3.jpg">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+        		<p style="text-indent: 24px;">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>	
+        		<p style="text-indent: 24px;">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+        	</div>
+        	<div id="content-bottom-right">
+        		<div id="img-bottom-right">
+        		    <div class="mask mask-bottom"></div>
+        		    <p class="mask-text"><span class="mask-text-1">&nbsp;&nbsp;前端技术</span><span class="mask-text-2">&nbsp;前端技术前端技术</span></p>
+        		</div>
+        		<div id="article-bottom-right">
+        			<ul>
+						<li>前端前端前端前端前端前端.....................<span>前端</span></li>
+						<li>前端前端前端前端.............................<span>前端</span></li>
+						<li>前端前端前端前端前端前端前端.................<span>前端</span></li>
+        			</ul>
+        			<div id="article-bottom-right-text-1">
+        				<div class="inner-text">
+        					<p>0</p>
+        					<div>
+        						<p>ONE TWO<br>THREE FOUR FIVE</p>
+        						<p>hello world hello world hello world</p>
+        					</div>
+        				</div>
+        			</div>
+        			<div id="article-bottom-right-text-2">
+        				<span class="left_quote">“</span>world hello world hello world hello world hello world hello world hello world hello world hello world<span class="right_quote">”</span>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <div id="footer"><a href="http://ife.baidu.com">ife.baidu.com</a></div>
+    </div>
+</body>
+
+</html>
