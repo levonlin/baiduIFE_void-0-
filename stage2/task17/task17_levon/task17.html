@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task17_零基础JavaScript编码（五）</title>
+  </head>
+  <style type="text/css">
+	.aqi-chart-wrap {
+		width: 600px;
+		height: 510px;
+		margin: 10px auto;
+		padding: 0 10px;
+		border: solid 1px;
+	}
+	.aqi-chart-wrap .column {
+		position: relative;
+		float: left;
+		border-left: solid 1px #fff;
+	}
+	.aqi-chart-wrap .column-month {
+		width: 140px;
+	}
+	.aqi-chart-wrap .column-week {
+		width: 35px;
+	}
+	.aqi-chart-wrap .column-day {
+		width: 5px;
+	}
+	.aqi-chart-wrap .aqi-superior {
+		background-color: #0f0;
+	}
+	.aqi-chart-wrap .aqi-good {
+		background-color: #00f;
+	}
+	.aqi-chart-wrap .aqi-light {
+		background-color: #f00;
+	}
+	.aqi-chart-wrap .aqi-mid {
+		background-color: #f0f;
+	}
+	.aqi-chart-wrap .aqi-heavy {
+		background-color: #000;
+	}
+  </style>
+<body>
+  <fieldset id="form-gra-time">
+    <legend>请选择日期粒度：</legend>
+    <label>日<input name="gra-time" value="day" type="radio"></label>
+    <label>周<input name="gra-time" value="week" type="radio"></label>
+    <label>月<input name="gra-time" value="month" type="radio"></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>请选择查看的城市：</legend>
+    <select id="city-select">
+    </select>
+  </fieldset>
+
+  <div class="aqi-chart-wrap">
+
+  </div>
+  <script src="task17.js"></script>
+</body>
+</html>
