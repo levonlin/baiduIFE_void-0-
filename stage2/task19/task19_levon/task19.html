@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task18_基础JavaScript练习（一）</title>
+</head>
+<style type="text/css">
+	#container {
+		text-align: center;
+	}
+	#container .sort {
+		margin-top: 10px;
+	}
+	#display {
+		margin-top: 10px;
+	}
+	#display .num-element{
+		display: inline-block;
+		width: 25px;
+		margin-left: 2px;
+		background-color: #f88;
+		color: #fff;
+		vertical-align: bottom;
+	}
+	#display .num-element.active{
+		background-color: #f00;
+	}
+</style>
+<body>
+	<div id="container">
+		<input type="text" class="input-text">
+		<span><button class="left-in-btn">左侧入</button><button class="right-in-btn">右侧入</button></span>
+		<span><button class="left-out-btn">左侧出</button><button class="right-out-btn">右侧出</button></span>
+		<div class="sort">
+			<button class="bubble-sort-btn">冒泡排序</button>
+			<button class="select-sort-btn">选择排序</button>
+			<button class="insert-sort-btn">插入排序</button>
+		</div>
+		<div id="display"></div>
+	</div>
+	<script type="text/javascript" src="task19.js"></script>
+</body>
+</html>
