@@ -1,6 +1,9 @@
 var queue = [42, 68, 35, 10, 70, 25];
 var sortShortcut = [];
 
+/**
+ * 渲染dom
+ */
 function render(arr) {
 	var displayArea = document.getElementById('display');
 	displayArea.innerHTML = '';
@@ -17,6 +20,9 @@ function render(arr) {
 	}
 }
 
+/**
+ * 判断字符串是否由纯数字字符组成
+ */
 function isNumberString(str) {
 	if (/^\d+$/.test(str)) {
 		return true;
@@ -25,6 +31,9 @@ function isNumberString(str) {
 	}
 }
 
+/**
+ * 校验输入值
+ */
 function validateInput(inputText) {
 	if (isNumberString(inputText) && inputText >= 10 && inputText <= 100) {
 		if (queue.length < 60) {
@@ -39,12 +48,18 @@ function validateInput(inputText) {
 	}
 }
 
+/**
+ * 交换函数
+ */
 function swap(arr, i, j) {
 	var temp = arr[i];
 	arr[i] = arr[j];
 	arr[j] = temp;
 }
 
+/**
+ * 以下三个函数实现冒泡、选择、交换排序，并将要呈现的排序过程拷贝到sortShortcut中
+ */
 function bubbleSort(arr) {
 	// 冒泡计数、确定上界
 	for (var i = arr.length - 1, last = 0; i > 0; i = last) {
@@ -121,6 +136,9 @@ function insertSort(arr) {
     }
 }
 
+/**
+ * 递归调用setTimeout将sortShortcut里的排序过程逐步渲染
+ */
 function showSort(i) {
 	render(sortShortcut[i]);
 	if(i + 1 < sortShortcut.length) {
@@ -132,6 +150,9 @@ function showSort(i) {
 	}
 }
 
+/**
+ * 在容器加个点击事件代理，对点击事件进行分发
+ */
 function delegateClickEvent() {
 	var container = document.getElementById('container');
 	container.addEventListener('click', function (event) {
@@ -183,6 +204,9 @@ function delegateClickEvent() {
 	}, false);
 }
 
+/**
+ * 页面初始化函数
+ */
 function init() {
 	delegateClickEvent();
 	render(queue);
