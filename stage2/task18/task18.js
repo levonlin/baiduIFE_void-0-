@@ -1,5 +1,8 @@
 var queue = [10, 3, 7, 12, 17, 30];
 
+/**
+ * 渲染dom
+ */
 function render() {
 	var displayArea = document.getElementById('display');
 	displayArea.innerHTML = '';
@@ -11,6 +14,9 @@ function render() {
 	}
 }
 
+/**
+ * 判断字符串是否由纯数字字符组成
+ */
 function isNumberString(str) {
 	if (/^\d+$/.test(str)) {
 		return true;
@@ -19,6 +25,9 @@ function isNumberString(str) {
 	}
 }
 
+/**
+ * 在容器加个点击事件代理，对点击事件进行分发
+ */
 function delegateClickEvent() {
 	var container = document.getElementById('container');
 	container.addEventListener('click', function (event) {
@@ -63,6 +72,9 @@ function delegateClickEvent() {
 	}, false);
 }
 
+/**
+ * 页面初始化函数
+ */
 function init() {
 	delegateClickEvent();
 	render();
