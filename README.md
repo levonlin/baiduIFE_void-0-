@@ -37,3 +37,10 @@
 #### task12
 * [利用单选框实现轮播](http://levonlin.github.io/ife_void0/stage1/task12/task12_radio.html)
 * [利用target伪类实现轮播（有bug）](http://levonlin.github.io/ife_void0/stage1/task12/task12_target.html)
+
+### stage2
+#### task18
+* [demo](http://levonlin.github.io/ife_void0/stage2/task18)
+
+####task9
+* [demo](http://levonlin.github.io/ife_void0/stage2/task19)
