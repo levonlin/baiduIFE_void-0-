@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task21_基础JavaScript练习（四）</title>
+</head>
+<style type="text/css">
+	.input-box-container {
+		padding: 20px 0;
+		border-bottom: solid 1px #000;
+		text-align: center;
+		font-family: SimHei, sans-serif, \9ED1\4F53;
+	}
+	.input-box-container .display {
+		margin-top: 20px;
+	}
+	.input-box-container .display .display-item {
+		display: inline-block;
+		margin-left: 5px;
+		padding: 5px;
+		background-color: #f88;
+		color: #fff;
+		cursor: pointer;
+	}
+	.input-box-container .display  .display-item .delete-info {
+		display: none;
+	}
+	.input-box-container .display  .display-item:hover {
+		background-color: #f00;
+	}
+	.input-box-container .display  .display-item:hover .delete-info {
+		display: inline-block;
+	}
+</style>
+<body>
+	<div class="input-box-container tags-container">
+		<label>Tag:<input  class="input-text" placeholder="请用空格/逗号/回车分隔输入"></input></label><br>
+		<div class="display"></div>
+	</div>
+	<div class="input-box-container hobbies-container">
+		<label><textarea  class="input-text" placeholder="请用,，、或空格回车分隔输入"></textarea></label><br>
+		<button class="left-in-btn">确认兴趣爱好</button>
+		<div class="display"></div>
+	</div>
+	<script type="text/javascript" src="task21.js"></script>
+</body>
+</html>
