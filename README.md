@@ -42,5 +42,13 @@
 #### task18
 * [demo](http://levonlin.github.io/ife_void0/stage2/task18)
 
-####task9
+####task19
 * [demo](http://levonlin.github.io/ife_void0/stage2/task19)
+
+####task20
+* [demo](http://levonlin.github.io/ife_void0/stage2/task20)
+
+####task21
+* [demo](http://levonlin.github.io/ife_void0/stage2/task21)
+
+
