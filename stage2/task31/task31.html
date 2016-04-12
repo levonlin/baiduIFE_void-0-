@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task31_表单（三）联动</title>
+	<style type="text/css">
+		.clearfix:after {
+			clear: both;
+			content: '';
+			display: block;
+			visibility: hidden;
+			height: 0;
+			line-height: 0;
+		}
+		.career-form {
+			width: 500px;
+			margin: 0 auto;
+			font: 14px simHei;
+		}
+		.career-form input[type=text],select {
+			height: 25px;
+			padding-left: 5px;
+			border: solid 1px #A9A9A9;
+			border-radius: 3px;
+			font: 14px/1.5 simHei;
+			outline: none;
+		}
+		.career-form select {
+			margin-right: 20px;
+		}
+		.career-form .row {
+			margin-bottom: 20px;
+		}
+		.career-form .place label {
+			float: left;
+		}
+		.career-form .place .select {
+			float: left;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<form class="career-form">
+		<div class="row clearfix status">
+			<label><input type="radio" name="status" value="student">在校生</label>
+			<label><input type="radio" name="status" value="not-student">非在校生</label>
+		</div>
+		<div class="row clearfix place">
+			<label></label>
+			<div class="select"></div>
+		</div>
+	</form>
+	<script type="text/javascript" src="task31.js"></script>
+</body>
+</html>
