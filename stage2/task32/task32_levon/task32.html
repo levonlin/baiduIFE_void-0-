@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单（四）实现表单自动生成工厂</title>
+</head>
+<style type="text/css">
+	.clearfix:after {
+		clear: both;
+		content: '';
+		display: block;
+		visibility: hidden;
+		height: 0;
+		line-height: 0;
+	}
+	#form-generator {
+		width: 500px;
+		margin: 0 auto;
+	}
+	#form-generator h2 {
+		margin: 10px 0;
+	}
+	#form-generator button {
+		float: right;
+	}
+
+	.my-form.style-default {
+		width: 500px;
+		margin: 50px auto;
+		font: 14px/1.5 simHei;
+	}
+	.my-form.style-default .row {
+		margin-bottom: 20px;
+	}
+	.my-form.style-default label {
+		float: left;
+		width: 15%;
+		margin-right: 5%;
+		text-align: right;
+	}
+	.my-form.style-default .form-item {
+		float: left;
+		width: 80%;
+	}
+	.my-form.style-default input {
+		width: 100%;
+		padding-left: 5px;
+		border: solid 1px #A9A9A9;
+		border-radius: 3px;
+		font: 14px/1.5 simHei;
+		outline: none;
+		box-sizing: border-box;
+	}
+	.my-form.style-default input.err {
+		border-color: #f00;
+	}
+	.my-form.style-default input.correct {
+		border-color: #0f0;
+	}
+	.my-form.style-default .submit-btn {
+		float: right;
+		border: solid 1px #2e6da4;
+		border-radius: 3px;
+		font: 14px/1.5 simHei;
+		background-color: #337ab7;
+		color: #fff;
+		outline: none;
+	}
+	.my-form.style-default .submit-btn:hover {
+		background-color: #286090;
+		border-color: #204d74;
+	}
+	.my-form.style-default .vali-info {
+		font: 12px simHei;
+		color: #A9A9A9;
+	}
+	.my-form.style-default .vali-info.err {
+		color: #f00;
+	}
+	.my-form.style-default .vali-info.correct {
+		color: #0f0;
+	}
+	
+
+
+	.my-form.style-1 {
+		width: 600px;
+		margin: 50px auto;
+		font: 16px/1.5 simHei;
+	}
+	.my-form.style-1 .row {
+		margin-bottom: 30px;
+	}
+	.my-form.style-1 label {
+		color: #88f;
+	}
+	.my-form.style-1 input {
+		width: 100%;
+		padding-left: 6px;
+		border: solid 2px #88f;
+		border-radius: 20px;
+		font: 16px/1.5 simHei;
+		outline: none;
+		box-sizing: border-box;
+	}
+	.my-form.style-1 input.err {
+		border-color: #f88;
+	}
+	.my-form.style-1 input.correct {
+		border-color: #8f8;
+	}
+	.my-form.style-1 .submit-btn {
+		float: right;
+		padding: 5px 8px;
+		border: solid 2px #2e6da4;
+		border-radius: 10px;
+		font: 14px/1.5 simHei;
+		background-color: #337ab7;
+		color: #fff;
+		outline: none;
+	}
+	.my-form.style-1 .submit-btn:hover {
+		background-color: #286090;
+		border-color: #204d74;
+	}
+	.my-form.style-1 .vali-info {
+		font: 14px simHei;
+		color: #A8A8A8;
+	}
+	.my-form.style-1 .vali-info.err {
+		color: #f88;
+	}
+	.my-form.style-1 .vali-info.correct {
+		color: #8f8;
+	}
+</style>
+<body>
+	<form id="form-generator">
+		<h2>表单生成器</h2>
+		<div>选择要生成的表单项：
+			<label><input type="checkbox" name="form-item" value="user-name">名称</label>
+			<label><input type="checkbox" name="form-item" value="password">密码</label>
+			<label><input type="checkbox" name="form-item" value="password-confirm">确认密码</label>
+			<label><input type="checkbox" name="form-item" value="mail">邮箱</label>
+			<label><input type="checkbox" name="form-item" value="phone">手机</label>
+		</div>
+		<div>选择表单样式：
+			<label><input type="radio" name="form-style" value="default" checked="true">默认样式</label>
+			<label><input type="radio" name="form-style" value="1">样式1</label>
+		</div>
+		<div>
+			<button type="button">走你~</button>
+		</div>
+	</form>
+	<form class="my-form"></form>
+	<script type="text/javascript" src="task32.js"></script>
+</body>
+</html>
