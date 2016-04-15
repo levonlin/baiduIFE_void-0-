@@ -11,7 +11,7 @@
     <meta name="robots" content="index, follow"/>
     <!-- SEO end -->
     <!-- 为移动设备添加 viewport -->
-    <meta name="viewport" content="width=divice-width, initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
     <meta name="format-detection" content="telphone=no, email=no"/>
     <!-- 国产浏览器 begin -->
@@ -29,22 +29,35 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png">
     <!-- iOS 设备 end -->
-    <!-- 添加 favicon icon -->
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
     <link rel="stylesheet" href="task11.css">
 	<title>task11_移动Web页面布局实践</title>
 </head>
 <body>
-	<header>
-		<div class="return"><a href=""><span>&lt;</span>返回</a></div>
+	<header class="main-header">
+		<div class="return"><span>&lt;</span><a href="">返回</a></div>
 		<div class="page-title">这是标题</div>
+		<div class="fix-flex"></div>
 	</header>
-	<nav>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+	<nav  class="main-nav">
+        <ul>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+        </ul>
 	</nav>
+    <header class="big-pic"><img src="img/big.jpg"></img></header>
+    <article class="tags">
+        <nav>
+            <ul>
+                <li><img src=""><span></span></li>
+                <li><img src=""><span></span></li>
+                <li><img src=""><span></span></li>
+                <li><img src=""><span></span></li>
+                <li><img src=""><span></span></li>
+            </ul>
+        </nav>
+    </article>
 </body>
 </html>
