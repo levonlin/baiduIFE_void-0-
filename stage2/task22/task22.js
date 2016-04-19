@@ -86,7 +86,6 @@ function renderNode (node) {
 	if (node.getDepth() > 1) {
 		node.parent.domNode.appendChild(newDiv);
 	} else if(node.getDepth() === 1) {
-		newDiv.className = 'node root-node';
 		var container = document.getElementById('container');
 		container.appendChild(newDiv);
 	}
