@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task23_JavaScript和树（二）</title>
+	<style type="text/css">
+		#container {
+			width: 1000px;
+			height: 200px;
+			margin: 10px auto;
+			font-size: 12px;
+		}
+		.node {
+			display: flex;
+			align-items: center;
+			flex: 1;
+			height: 100%;
+			padding: 10px 2px;
+			margin: 0 5px;
+			border: solid 2px #555;
+			box-sizing: border-box;
+			background-color: #fff;
+		}
+		.node.active {
+			background-color: #00f;
+		}
+		.node.search-result {
+			background-color: #0f0;
+		}
+		.control {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div class="control">
+		<button class="df-traverse">深度优先遍历</button>
+		<button class="bf-traverse">广度优先遍历</button>
+		<br>
+		<br>
+		<input type="text" class="search-text">
+		<button class="df-search">深度优先搜索</button>
+		<button class="bf-search">广度优先搜索</button>
+	</div>
+	<script type="text/javascript" src="task23.js"></script>
+</body>
+</html>

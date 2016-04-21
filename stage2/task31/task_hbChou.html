@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 31</title>
+	<style type="text/css">
+		body{font-family: "黑体";font-size: 18px;}
+		div.wrapper{text-align: center;}
+		div.radio label{cursor: pointer;}
+		div.wrapper form{margin-top: 50px;}
+		div.wrapper form span{margin-right: 20px;}
+		form#studentForm select{font-size: 16px;height: 25px;padding-left: 10px;}
+		form#studentForm select option{padding-left: 10px;}
+		form#studentForm select#city{width: 100px;}
+		form#studentForm select#school{width: 200px;}
+		form#notStudentForm{display: none;}
+		form#notStudentForm input{width: 200px;height: 20px;font-size: 16px;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="radio">
+			<label for="student"><input type="radio" id="student" checked="checked" name="studentOrNot" value="student">在校生</label>
+			<label for="notStudent"><input type="radio" id="notStudent" name="studentOrNot" value="notStudent">非在校生</label>
+		</div>
+		<form action="#" id="studentForm">
+			<span>学校</span><select name="city" id="city">
+			</select>
+			<select name="school" id="school">
+			</select>
+		</form>
+		<form action="#" id="notStudentForm">
+			<span>就业单位</span><input type="text">
+		</form>
+	</div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>
