@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 20</title>
+	<style type="text/css">
+		body{margin: 0;padding: 0;}
+		div.inputDiv{padding: 10px;}
+		div.queue{vertical-align: bottom;}
+		div.queue>p{min-width: 40px;min-height: 20px;max-width: 200px;background-color: #E54F47;display: inline-block;margin: 10px;color: #fff;font-family: "黑体";font-size: 18px;text-align: center;padding: 5px;cursor: pointer;}
+		div button{margin-left: 20px;}
+		div.queue>p span.blue{color: #418EF3;}
+		div.queue>p span.green{color: #4EC964;}
+		div.queue>p span.yellow{color: #F6D572;}
+		div.queue>p span.black{color: #333;}
+		div.queue>p span.purple{color: #56297D;}
+	</style>
+</head>
+<body>
+	<div class="inputDiv">
+		请输入内容：<textarea cols="25" rows="3"></textarea>
+		<button id="search">查询</button>
+		<button id="unhighlight">取消文字高亮</button>
+		<button id="leftIn">左侧入</button>
+		<button id="rightIn">右侧入</button>
+		<button id="leftOut">左侧出</button>
+		<button id="rightOut">右侧出</button>
+	</div>
+	<div class="queue" id="queue"></div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>
