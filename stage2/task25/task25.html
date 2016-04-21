@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task25_JavaScript和树（四）</title>
+	<style type="text/css">
+		@font-face {
+		  font-family: "iconfont";
+		  src: url('img/iconfont.eot?t=1461220682'); /* IE9*/
+		  src: url('img/iconfont.eot?t=1461220682#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		  url('img/iconfont.woff?t=1461220682') format('woff'), /* chrome, firefox */
+		  url('img/iconfont.ttf?t=1461220682') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+		  url('img/iconfont.svg?t=1461220682#iconfont') format('svg'); /* iOS 4.1- */
+		}
+
+		.iconfont {
+		  font-family:"iconfont" !important;
+		  font-size:16px;
+		  font-style:normal;
+		  -webkit-font-smoothing: antialiased;
+		  -webkit-text-stroke-width: 0.2px;
+		  -moz-osx-font-smoothing: grayscale;
+		}
+		.icon-triangle-copy-copy-copy:before { content: "\e60a"; }
+		.icon-saelect:before { content: "\e600"; }
+		
+		.control {
+			text-align: center;
+		}
+		#container {
+			width: 500px;
+			margin: 10px auto;
+			font-size: 12px;
+		}
+		.node {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex: 1;
+			width: 100%;
+			padding: 5px 10px;
+			margin: 5px 0;
+			border-top: solid 1px #555;
+			box-sizing: border-box;
+			background-color: #fff;
+			color: #000;
+		}
+		.node.active {
+			background-color: #00f;
+		}
+		.node.search-result {
+			background-color: #0f0;
+		}
+		.node.selected {
+			color: #f00;
+		}
+		.node 
+		.node-info {
+			vertical-align: bottom;
+		}
+		.node 
+		.fold {
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="control">
+		<input type="text" class="search-text">
+		<button class="df-search">深度优先搜索</button>
+		<button class="bf-search">广度优先搜索</button>
+		<br><br>
+		<hr>
+		<button class="delete-node">删除选中节点</button>
+		<br><br>
+		<input type="text" class="add-text">
+		<button class="add-node">在选中节点下添加子节点</button>
+	</div>
+	<div id="container"></div>
+	<script type="text/javascript" src="task25.js"></script>
+</body>
+</html>
