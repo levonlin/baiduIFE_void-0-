@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 35</title>
+	<style type="text/css">
+		*{box-sizing: border-box;}
+		p{margin: 0;}
+		h2{margin: 10px 0;}
+		div.container{position: relative;width: 504px;height: 504px;border: 2px solid #000;margin: 50px;float: left;}
+		div.target{position: absolute;width: 50px;height: 50px;top: 100px;left: 100px;transition: all .3s linear;-webkit-transition: all .3s linear;-moz-transition: all .3s linear;}
+		div.target div{float: left;}
+		div.target div.header{width: 50px;height: 10px;background-color: #DD4E42;/*红*/}
+		div.target div.body{width: 50px;height: 40px;background-color: #54CD67;/*绿*/}
+		div.row:after{content: "";height: 0;display: block;visibility: hidden;overflow: hidden;clear: both;}
+		div.column{width: 50px;height: 50px;border: 1px solid #ccc;float: left;}
+		div.column{position: relative;}
+		div.column span{position: absolute;font-size: 18px;font-family: "黑体";display: block;width: 30px;}
+		div.column span.column-header{left: 50%;margin-left: -10px;top: -30px;}
+		div.column span.row-header{top: 50%;margin-top: -10px;left: -30px;}
+		div.panel{float: left;}
+		div.controlArea{position: relative;width: 410px;height: 100px;overflow: hidden;background-color: #888;}
+		div.lineNumber{position: absolute;width: 30px;top: 1px;left: 0px;padding-top: 2px;padding-left: 5px;}
+		div.lineNumber p{color: #fff;text-align: center;font-size: 15px;width: 19px;height: 19px;border-radius: 9.5px;}
+		textarea{width: 380px;height: 100px;font-size: 16px;background-color: #000;color: #fff;overflow-y: auto;resize: none;margin-left: 30px;}
+		button#execute{margin: 10px 0;}
+		button{cursor: pointer;}
+		div.executeResult{border-top: 1px dashed #888;}
+		p#executeResult{width: 410px;height: 45px;border: 1px solid #ccc;padding: 10px;}
+		p{color: #666;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="target" id="target"><div class="header" id="targetHeader"></div><div class="body" id="targetBody"></div></div>
+		<div class="row">
+			<div class="column"><span class="column-header">1</span><span class="row-header">1</span></div>
+			<div class="column"><span class="column-header">2</span></div>
+			<div class="column"><span class="column-header">3</span></div>
+			<div class="column"><span class="column-header">4</span></div>
+			<div class="column"><span class="column-header">5</span></div>
+			<div class="column"><span class="column-header">6</span></div>
+			<div class="column"><span class="column-header">7</span></div>
+			<div class="column"><span class="column-header">8</span></div>
+			<div class="column"><span class="column-header">9</span></div>
+			<div class="column"><span class="column-header">10</span></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">2</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">3</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">4</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">5</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">6</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">7</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">8</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">9</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+		<div class="row">
+			<div class="column"><span class="row-header">10</span></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+	</div>
+	<div class="panel">
+		<h2>命令执行区域</h2>
+		<div class="controlArea">
+			<div class="lineNumber" id="lineNumber">
+			</div>
+			<textarea></textarea>
+		</div>
+		<button id="execute">执行</button>
+		<div class="executeResult">
+			<h2>指令执行结果</h2>
+			<p id="executeResult"></p>
+		</div>
+		<p>操作指南：<br>GO：向红色边所面向的方向前进一格（一格等同于正方形的边长）<br>
+		TUN LEF：向左转（逆时针旋转90度）<br>
+		TUN RIG：向右转（顺时针旋转90度）<br>
+		TUN BAC：向后转（旋转180度）<br>
+		TRA LEF：向屏幕的左侧移动一格，方向不变<br>
+		TRA TOP：向屏幕的上面移动一格，方向不变<br>
+		TRA RIG：向屏幕的右侧移动一格，方向不变<br>
+		TRA BOT：向屏幕的下面移动一格，方向不变<br>
+		MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格<br>
+		MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格<br>
+		MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格<br>
+		MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格</p>
+	</div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>

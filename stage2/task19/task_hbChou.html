@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 19</title>
+	<style type="text/css">
+		body{margin: 0;padding: 0;}
+		div.inputDiv{padding: 10px;}
+		div button{margin-left: 20px;}
+		div.queue{line-height: 0;margin-top: 20px;}
+		div.queue p.placeholder{width: 10px;height: 100px;background-color: #fff;}
+		div.queue>p{width: 20px;background-color: #E54F47;display: inline-block;margin-right: 4px;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="inputDiv">
+		请输入你喜欢的数字：<input type="text">
+		<button id="insert">插入</button>
+		<button id="leftOut">左侧出</button>
+		<button id="rightOut">右侧出</button>
+	</div>
+	<div class="queue" id="queue">
+	</div>
+	<script type="text/javascript" src="task.js"></script>
+</body>
+</html>
