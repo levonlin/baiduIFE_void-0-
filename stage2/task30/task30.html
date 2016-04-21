@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task30_表单（二）多个表单项的动态校验</title>
+</head>
+<style type="text/css">
+	.clearfix:after {
+		clear: both;
+		content: '';
+		display: block;
+		visibility: hidden;
+		height: 0;
+		line-height: 0;
+	}
+	.my-form {
+		width: 500px;
+		margin: 50px auto;
+		font: 14px/1.5 simHei;
+	}
+	.my-form .row {
+		margin-bottom: 20px;
+	}
+	.my-form label {
+		float: left;
+		width: 20%;
+		text-align: right;
+	}
+	.my-form .form-item {
+		float: left;
+		width: 80%;
+	}
+	.my-form input {
+		width: 100%;
+		padding-left: 5px;
+		border: solid 1px #A9A9A9;
+		border-radius: 3px;
+		font: 14px/1.5 simHei;
+		outline: none;
+		box-sizing: border-box;
+	}
+	.my-form input.err {
+		border-color: #f00;
+	}
+	.my-form input.correct {
+		border-color: #0f0;
+	}
+	.my-form .submit-btn {
+		float: right;
+		border: solid 1px #2e6da4;
+		border-radius: 3px;
+		font: 14px/1.5 simHei;
+		background-color: #337ab7;
+		color: #fff;
+	}
+	.my-form .submit-btn:hover {
+		background-color: #286090;
+		border-color: #204d74;
+	}
+	.my-form .vali-info {
+		font: 12px simHei;
+		color: #A9A9A9;
+	}
+	.my-form .vali-info.err {
+		color: #f00;
+	}
+	.my-form .vali-info.correct {
+		color: #0f0;
+	}
+</style>
+<body>
+	<form class="my-form">
+		<div class="row clearfix">
+			<label for="user-name">名称&nbsp;</label>
+			<div class="form-item">
+				<input type="text" name="user-name"><br>
+				<span class="vali-info"></span>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<label for="password">密码&nbsp;</label>
+			<div class="form-item">
+				<input type="password" name="password"><br>
+				<span class="vali-info"></span>	
+			</div>
+		</div>
+		<div class="row clearfix">
+			<label for="password-confirm">密码确认&nbsp;</label>
+			<div class="form-item">
+				<input type="password" name="password-confirm"><br>
+				<span class="vali-info"></span>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<label for="mail">邮箱&nbsp;</label>
+			<div class="form-item">
+				<input type="text" name="mail"><br>
+				<span class="vali-info"></span>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<label for="phone">手机&nbsp;</label>
+			<div class="form-item">
+				<input type="text" name="phone"><br>
+				<span class="vali-info"></span>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<button class="submit-btn" type="submit">提交</button>
+		</div>
+	</form>
+	<script type="text/javascript" src="task30.js"></script>
+</body>
+</html>
