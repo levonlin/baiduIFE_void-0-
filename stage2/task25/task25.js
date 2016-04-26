@@ -42,6 +42,8 @@ Node.prototype = {
 		var child = new Node(childData);
 		child.parent = this;
 		this.children.push(child);
+
+		return child;
 	},
 
 	getDepth: function () {
@@ -59,7 +61,6 @@ Node.prototype = {
  */
 function Tree(data) {
 	this._root = new Node(data);
-	this.selectedNode = null;
 }
 
 Tree.prototype = {
@@ -107,15 +108,23 @@ Tree.prototype = {
 	    }
 
 	 	if (parent) {
- 		 	if (Object.prototype.toString.call(data) ==='[object Array]' ) {
- 		 		data.forEach(function (item) {
-					parent.addChild(item);
- 		 		});
- 		 	} else if (Object.prototype.toString.call(data) === '[object String]'){
- 		 		parent.addChild(data);
+			if (Object.prototype.toString.call(data) === '[object String]'){
+ 		 		return parent.addChild(data);
+ 		 	} else {
+ 		 		throw new Error('The first argument should be a string.');
  		 	}
 	 	} else {
 	 	    throw new Error('Cannot add node to a non-existent parent.');
+	 	}
+	},
+
+	addWithArray: function(data, toNode) {
+ 		if (Object.prototype.toString.call(data) ==='[object Array]' ) {
+	 		data.forEach(function (item) {
+				this.add(item, toNode);
+	 		}.bind(this));
+	 	} else {
+	 	    throw new Error('The first argument should be an array.');
 	 	}
 	},
 
@@ -132,31 +141,136 @@ Tree.prototype = {
 		}
 	},
 
+	search: function (searchText, traversal) {
+		var searchResult = [];
+		this.contains(function (node) {
+			if (node.data === searchText) {
+				searchResult.push(node);
+			}
+		}, traversal);
+
+		return searchResult;
+	}
+};
+
+/**
+ * 树对应的dom树类型，负责树的展现与交互
+ */
+function DomTree(tree) {
+	this.tree = tree;
+	this.selectedNode = null;
+	this.searchResult = [];
+}
+
+DomTree.prototype = {
+	constructor: DomTree,
+
+	/**
+	 * 设置被选中的dom节点
+	 */
+	setSelectedNode: function (selectedNode) {
+		// 下面的大部分操作都和选择节点有关，所以只要在选择时清空搜索的展示即可
+		this.clearSearch();
+		if (this.selectedNode) {
+			removeClass(this.selectedNode, 'selected');
+		}
+
+		if (selectedNode) {
+			addClass(selectedNode, 'selected');
+		}
+
+		this.selectedNode = selectedNode;
+	},
+
+	/**
+	 * 判断dom节点是否被折叠
+	 */
+	isFold: function (domNode) {
+		return hasClass(domNode, 'fold');
+	},
+
+	/**
+	 * 展开dom节点
+	 */
+	expandNode: function (node) {
+		var icon = node.getElementsByClassName('icon')[0];
+		removeClass(icon, 'icon-fold');
+		addClass(icon, 'icon-expand');
+
+		removeClass(node, 'fold');
+	},
+
+	/**
+	 * 折叠dom节点
+	 */
+	foldNode: function (node) {
+		var icon = node.getElementsByClassName('icon')[0];
+		removeClass(icon, 'icon-expand');
+		addClass(icon, 'icon-fold');
+
+		addClass(node, 'fold');
+	},
+
 	/**
 	 * 定义一个广度优先遍历的回调函数来渲染节点
 	 */
-	renderNode: function (node) {
+	renderNode: function (treeNode) {
 		var newDiv = document.createElement('div');
-		newDiv.className = 'node';
+		addClass(newDiv, 'node');
 
 		var infoDiv = document.createElement('div');
-		infoDiv.className = 'node-info';
+		addClass(infoDiv, 'node-info');
+		// 禁止用户选择文字
+		addClass(infoDiv, 'noTextSelect');
 
-		var flodDiv = document.createElement('i');
-		flodDiv.className = 'fold iconfont icon-saelect';
-		infoDiv.appendChild(flodDiv);
+		var iconDiv = document.createElement('i');
+		addClass(iconDiv, 'icon');
+		addClass(iconDiv, 'iconfont');
+		// 没有子节点就把图标隐藏
+		if (treeNode.children.length === 0) {
+			addClass(iconDiv, 'icon-hidden');
+		}
+		infoDiv.appendChild(iconDiv);
 
-		var newData = document.createTextNode(' ' + node.data);
+		var newData = document.createTextNode(' ' + treeNode.data);
 		infoDiv.appendChild(newData);
-
 		newDiv.appendChild(infoDiv);
-		node.domNode = newDiv;
 		
-		if (node.getDepth() > 1) {
-			node.parent.domNode.appendChild(newDiv);
-		} else if(node.getDepth() === 1) {
+		// 初始化时全部折叠，刷新时保留原先的原先的折叠状态
+		if (!treeNode.domNode || treeNode.domNode && this.isFold(treeNode.domNode)) {
+			this.foldNode(newDiv);
+		} else {
+			this.expandNode(newDiv);
+		}
+
+		// 刷新时保留原来的选择状态
+		if (treeNode.domNode && hasClass(treeNode.domNode, 'selected')) {
+			this.setSelectedNode(newDiv);
+		}
+		treeNode.domNode = newDiv;
+		
+		if (treeNode.getDepth() > 1) {
+			treeNode.parent.domNode.appendChild(newDiv);
+		} else if(treeNode.getDepth() === 1) {
 			var container = document.getElementById('container');
 			container.appendChild(newDiv);
+		}
+
+		return newDiv;
+	},
+
+	/**
+	 * dom节点点击事件的处理函数
+	 */
+	clickNodeHandler: function (node) {
+		if (node) {
+			this.setSelectedNode(node);
+
+			if (this.isFold(node)) {
+				this.expandNode(node);
+			} else {
+				this.foldNode(node);
+			}
 		}
 	},
 
@@ -166,176 +280,149 @@ Tree.prototype = {
 	renderTree: function () {
 		var container = document.getElementById('container');
 		container.innerHTML = '';
-		this.contains(this.renderNode, this.traverseBF);
+		this.tree.contains(this.renderNode.bind(this), this.tree.traverseBF);
 
-		// 在容器添加一个节点的点击事件代理
-		container.addEventListener('click', function (event) {
+		// 在容器添加一个节点的点击事件代理；
+		// 使用DOM0级事件处理使元素上只能有唯一一个事件处理程序，以避免重复添加多个事件处理后发生冲突
+		container.onclick = function (event) {
 			var target = event.target;
-			if (hasClass(target, 'node')) {
-				if (this.selectedNode) {
-					removeClass(this.selectedNode.domNode, 'selected');
-				}
-				addClass(target, 'selected');
-				this.contains(function (node) {
-					if (node.domNode === target) {
-						this.selectedNode = node;
-					}
-				}.bind(this), this.traverseBF);
+			var node = null;
+			if (hasClass(target, 'node-info')) {
+				node = target.parentNode;
+			} else if (hasClass(target, 'icon')) {
+				node = target.parentNode.parentNode;
 			}
-		}.bind(this), false);
+			this.clickNodeHandler(node);
+		}.bind(this);
+	},
+
+	/**
+	 * 由dom节点获取树节点
+	 */
+	getTreeNode: function (node) {
+		var result = null;
+
+		this.tree.contains(function (treeNode) {
+			if (treeNode.domNode === node) {
+				result = treeNode;
+			}
+		}, this.tree.traverseBF);
+
+		return result;
+	},
+
+	/**
+	 * 删除选中节点的操作
+	 */
+	deleteSelectedNode: function () {
+		var treeNode = this.getTreeNode(this.selectedNode);
+		if (this.selectedNode) {
+			this.tree.remove(treeNode);
+			
+			this.setSelectedNode(null);
+			this.renderTree();
+		}
+	},
+
+	/**
+	 * 在选中节点下添加子节点的操作
+	 */
+	appendToSelectedNode: function (newData) {
+		if (!newData) {
+			alert('节点内容不能为空');
+		}
+		else if (!this.selectedNode) {
+			alert('请选择一个父节点插入');
+		} else {
+			var parentTreeNode = this.getTreeNode(this.selectedNode);
+			var newTreeNode = this.tree.add(newData, parentTreeNode);
+			
+			// 展开选中节点
+			this.expandNode(this.selectedNode);
+			// 选择刚生成的节点
+			this.setSelectedNode(this.renderNode(newTreeNode));
+		}
+	},
+
+	/**
+	 * 搜索结果的展示
+	 */
+	searchNode: function (searchText) {
+		// 清空上次搜索的展示
+		this.clearSearch();
+		var result = this.tree.search(searchText, this.tree.traverseBF);
+		
+		if (result.length) {
+			result.forEach(function (treeNode) {
+				// 展开搜索结果的父节点
+				var parentTreeNode = treeNode.parent;
+				while(parentTreeNode) {
+					this.expandNode(parentTreeNode.domNode);
+					parentTreeNode = parentTreeNode.parent;
+				}
+				// 标记搜索到的节点
+				addClass(treeNode.domNode, 'search-result');
+				this.searchResult.push(treeNode.domNode);
+			}.bind(this));
+		} else {
+			alert('找不到指定内容');
+		}
+	},
+
+	/**
+	 * 清空搜索结果的展示
+	 */
+	clearSearch: function () {
+		if (this.searchResult.length !== 0) {
+			this.searchResult.forEach(function (node) {
+				removeClass(node, 'search-result');
+			});
+			this.searchResult.length = 0;
+		}
 	}
 };
 
 // 初始化并渲染一棵树
 var tree = new Tree('Super');
-tree.add(['Cat', 'Note', 'Fish'], 'Super', tree.traverseBF);
-tree.add(['Apple', 'Phone', ''], 'Cat', tree.traverseBF);
-tree.add(['Pear', 'Pig', 'Cola', 'Soccer'], 'Apple', tree.traverseBF);
-tree.add(['Book', 'School'], '', tree.traverseBF);
-tree.add(['Human', 'Program'], 'Note', tree.traverseBF);
-tree.add(['Code', 'Operator', 'Man'], 'Human', tree.traverseBF);
-tree.add(['Element', 'Class'], 'Program', tree.traverseBF);
-tree.add('Cat', 'Element', tree.traverseBF);
-tree.renderTree();
-
-
-
-// 定义展示遍历过程的计数变量，及定时器队列
-var count = 0;
-var timeoutQueue = [];
-
-/**
- * 遍历的回调函数，将遍历过程和结果缓存起来
- */
-function show(node) {
-	var showTimeout = setTimeout(function () {
-		addClass(node.domNode, 'active');
-		setTimeout(function () {
-			removeClass(node.domNode, 'active');
-		}, 1000);
-	}, 1000 * count);
-
-	timeoutQueue.push(showTimeout);
-	count++;
-}
-
-/**
- * 若上次遍历的展示过程还在进行，则展示并重置计时
- */
-function stopShow() {
-	timeoutQueue.forEach(function (item) {
-		clearTimeout(item);	
-	});
-
-	timeoutQueue.length = 0;
-	count = 0;
-}
-
-// 缓存搜索结果的数组
-var searchResult = [];
-
-/**
- * 搜索的回调函数，将搜索过程和结果缓存起来
- */
-function showSearch(node, searchText) {
-	if (node.data === searchText) {
-		var showTimeout = setTimeout(function () {
-			addClass(node.domNode, 'search-result');
-		}, 1000 * count);
-		searchResult.push(node.domNode);
-		timeoutQueue.push(showTimeout);
-		count++;
-	} else {
-		show(node);
-	}
-}
-
-/**
- * 处理搜索结果
- */
-function handleSearchResult() {
-	if (searchResult.length === 0) {
-		var showTimeout = setTimeout(function () {
-			alert('找不到指定内容');
-		}, 1010 * count );
-		timeoutQueue.push(showTimeout);
-		count++;
-	}
-}
-
-/**
- * 清空上次搜索的展示
- */
-function clearSearch() {
-	stopShow();
-	if (searchResult.length !== 0) {
-		searchResult.forEach(function (item) {
-			removeClass(item, 'search-result');
-		});
-		searchResult.length = 0;
-	}
-}
-
-/**
- * 删除选中节点的操作
- */
-function deleteSelectedNode() {
-	if (tree.selectedNode) {
-		tree.remove(tree.selectedNode);
-		tree.selectedNode = null;
-		tree.renderTree();
-	}
-}
-
-/**
- * 在选中节点下添加子节点的操作
- */
-function appendToSelectedNode(newData) {
-	if (tree.selectedNode) {
-		tree.add(newData, tree.selectedNode);
-		tree.selectedNode = null;
-		tree.renderTree();
-	} else {
-		alert('请选择一个父节点插入');
-	}
-}
+tree.addWithArray(['Cat', 'Note', 'Fish'], 'Super');
+tree.addWithArray(['Apple', 'Phone', 'Dog'], 'Cat');
+tree.addWithArray(['Pear', 'Pig', 'Cola', 'Soccer'], 'Apple');
+tree.addWithArray(['Book', 'School'], 'Dog');
+tree.addWithArray(['Human', 'Program'], 'Note');
+tree.addWithArray(['Code', 'Operator', 'Man'], 'Human');
+tree.addWithArray(['Element', 'Class'], 'Program');
+tree.add('Cat', 'Element');
+var domTree = new DomTree(tree);
+domTree.renderTree();
 
 /** 
  * 分发点击事件的事件代理
  */
 function delegateControlerClickEvent() {
 	var controler = document.getElementsByClassName('control')[0];
-	controler.addEventListener('click', function (event) {
+	controler.onclick = function (event) {
 		var target = event.target;
 		var searchText = controler.getElementsByClassName('search-text')[0].value;
 		// 按选择的方式进行遍历
 		switch (target.className) {
-			case 'df-search':
-			clearSearch();
-			tree.contains(function (node) {
-				showSearch(node, searchText);
-			}, tree.traverseDF);
-			handleSearchResult();
+			case 'search':
+			domTree.searchNode(searchText);
 			break;
 
-			case 'bf-search':
-			clearSearch();
-			tree.contains(function (node) {
-				showSearch(node, searchText);
-			}, tree.traverseBF);
-			handleSearchResult();
+			case 'clear-search':
+			domTree.clearSearch();
 			break;
 
 			case 'delete-node':
-			deleteSelectedNode();
+			domTree.deleteSelectedNode();
 			break;
 
 			case 'add-node':
 			var newData = controler.getElementsByClassName('add-text')[0].value;
-			appendToSelectedNode(newData);
+			domTree.appendToSelectedNode(newData);
 			break;
 		}
-	}, false);
+	};
 }
 
 delegateControlerClickEvent();

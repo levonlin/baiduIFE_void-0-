@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>task25_JavaScript和树（四）</title>
 	<style type="text/css">
+		/*引入字体图标*/
 		@font-face {
 		  font-family: "iconfont";
 		  src: url('img/iconfont.eot?t=1461220682'); /* IE9*/
@@ -21,9 +22,18 @@
 		  -webkit-text-stroke-width: 0.2px;
 		  -moz-osx-font-smoothing: grayscale;
 		}
-		.icon-triangle-copy-copy-copy:before { content: "\e60a"; }
-		.icon-saelect:before { content: "\e600"; }
-		
+		.icon-fold:before { content: "\e60a"; }
+		.icon-expand:before { content: "\e600"; }
+		.icon-hidden:before { visibility: hidden; }
+
+		/*禁止用户选择文字*/
+		.noTextSelect {
+			-moz-user-select: none; /*火狐*/
+			-webkit-user-select: none; /*webkit浏览器*/
+			-ms-user-select: none; /*IE10*/
+			user-select: none;
+		}
+
 		.control {
 			text-align: center;
 		}
@@ -32,34 +42,37 @@
 			margin: 10px auto;
 			font-size: 12px;
 		}
+
 		.node {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			flex: 1;
 			width: 100%;
-			padding: 5px 10px;
-			margin: 5px 0;
-			border-top: solid 1px #555;
+			padding-left: 10px;
 			box-sizing: border-box;
 			background-color: #fff;
 			color: #000;
 		}
-		.node.active {
-			background-color: #00f;
-		}
 		.node.search-result {
-			background-color: #0f0;
-		}
-		.node.selected {
 			color: #f00;
 		}
-		.node 
+		.node.selected>
 		.node-info {
-			vertical-align: bottom;
+			background-color: #999;
+		}
+		.node.fold 
+		.node {
+			display: none;
+		}
+
+		.node-info {
+			padding: 5px;
 		}
 		.node 
-		.fold {
+		.node-info 
+		.icon:hover {
+			cursor: pointer;
+		}
+		.node 
+		.node-info 
+		.icon {
 			font-size: 12px;
 		}
 	</style>
@@ -67,8 +80,8 @@
 <body>
 	<div class="control">
 		<input type="text" class="search-text">
-		<button class="df-search">深度优先搜索</button>
-		<button class="bf-search">广度优先搜索</button>
+		<button class="search">搜索</button>
+		<button class="clear-search">清空搜索结果</button>
 		<br><br>
 		<hr>
 		<button class="delete-node">删除选中节点</button>
